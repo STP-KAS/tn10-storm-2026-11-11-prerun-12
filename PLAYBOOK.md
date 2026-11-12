@@ -46,7 +46,13 @@ Not a gate. Read on 2026-11-12 between 09:55Z and 10:10Z. This is our own TN10 t
 
 ## Offline rehearsal, recorded before `PRE-RUN-OPEN`
 
-REHEARSAL_PLACEHOLDER
+Rehearsal A (p12-a), 2026-11-12 10:13:03Z to 10:35:25Z (desk, Brussels 11:13 to 11:35). The real pre-run 12 desk runner, counter and read-only mempool probe ran with the rehearsal family sender, the stand-in genesis submit (it writes state files and submits nothing) and pre-run 9's stand-in node, against a local bare origin. Short times: BASE, OBS-1..3 and RETURN 2 minutes each, a 2-minute tail.
+
+- FEE_SPLIT verified on the submit rows: floor 100, r110 110, r126 126, r150 150, r200 200, every tier on the desk path. No payment sender was started (`senders=0`).
+- BASE, HOLD-1, HOLD-2, HOLD-3 (OBS-1..3), the pinned HOLD-4 minute (10:29Z) and RETURN published as `OBSERVATION`; each step file carried the new per-minute tier table, the chain table and the probe table. `counts/chain/TIMELINE.md`, `counts/chain/MEMPOOL.md` and `logs/METHOD.md` were published and the runner exited 0. No rehearsal process was left running.
+- The probe read the real desk node (read-only), so its columns show the outside fee-100 heavy stream present at that time (10 to 16 entries, nearly all ready, ready mass 5 to 8 blocks) and none of our rehearsal hops (they went to the stand-in). The stand-in lands hops by its own rule, so its tier numbers are not a network result.
+- Before the rehearsal, `fee-check.mjs --builder` built hops offline in one builder process from the check bundle: mass 13,046 in every tier, fee 1,304,600 / 1,435,060 / 1,643,796 / 1,956,900 / 2,609,200 sompi (mass times 100 / 110 / 126 / 150 / 200). Nothing was submitted.
+- A setup slip of mine, recorded: a PowerShell loop variable overwrote the rehearsal folder variable, so the first copy of the rehearsal tools landed in the desk's private sixteen folder. I removed those three copied folders and rebuilt the rehearsal folder before it ran. No node was touched and the published bundle was not changed.
 
 ## Status after the live run
 
