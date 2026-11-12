@@ -43,3 +43,11 @@ Hop rates per hop, one builder: floor (families 1–4) 100 sompi/gram on the des
 - counts/desk/RETURN.md: 2026-11-12T11:41:21Z
 - counts/chain/TIMELINE.md: 2026-11-12T11:46:33Z
 - counts/chain/MEMPOOL.md: 2026-11-12T11:46:36Z
+
+## Reading against the selection rule (added by the operator after the run)
+
+Hops per family a minute (floor has four families, the others three), as a share of each tier's rate in the stream-absent control 11:02–11:11Z (48.5–49.5 per family for every tier): with the outside fee-100 heavy stream present (43 scored minutes), median floor 76, r110 77, r126 82, r150 87, r200 92 percent; over 9 blocks of ready mass 52, 55, 64, 66, 80. Without the stream the tiers were flat within about 2 percent. The tiers were in strict fee order in 32 of the 43 stream-present minutes, and r200 was ahead of floor in all 43, but by a median factor of about 1.27 per family, far under the (fee/mass)^3 weight of 8.00. Our reading: the weight changes how long a hop waits for a later block, not whether it lands; every OK hop landed. Full tables in [LESSONS.md](LESSONS.md). This is one run on one node.
+
+## Label fix (operator)
+
+The runner wrote this file under the commit message `Pre-run 11 method.` (3d7477a), a label left over from pre-run 11's runner; its FAILED path has the same leftover (`Pre-run 11 failed before RETURN.`). No gate reads either. The file's content is pre-run 12's. A next repo's runner takes the pre-run number from its config.

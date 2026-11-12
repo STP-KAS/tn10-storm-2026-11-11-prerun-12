@@ -56,7 +56,14 @@ Rehearsal A (p12-a), 2026-11-12 10:13:03Z to 10:35:25Z (desk, Brussels 11:13 to 
 
 ## Status after the live run
 
-AFTER_PLACEHOLDER
+Read on 2026-11-12 between 11:46Z and 11:58Z. Not a gate.
+
+- Desk: the runner (started 10:38:26Z) ran BASE to RETURN without a repair or a restart and ended at 11:46:41Z after publishing `counts/chain/TIMELINE.md`, `counts/chain/MEMPOOL.md` and `logs/METHOD.md`. Its probe (`PROBE_STOP` 11:46:31Z, 202 samples), counter (stop 11:46:32Z), family sender, coordinator and broker (`builder exit 0`) exited with it; no runner process was left on the desk (checked 11:52Z). No payment sender was started. The private TN10 kaspad was not stopped and is still up, synced. No devnet, `KaspaPublicNode` or miner was started; `serve.mjs` and the faucet process were not touched.
+- Mini: the runner (MINI-ARMED 10:37:55Z) published a second read for every step and ended at 11:56:32Z after its 15-minute tail (`RUNNER end`); no runner process was left on Mini. Its log shows 19 late removals, all in the minute after its HOLD-3 publish (11:27:29Z). Its TN10 kaspad was not wiped or restarted and is still up.
+- Bot: the waiter read HOLD-3 on origin at 11:27:30Z, pinned 11:31Z, found no free node at 11:30:31Z, and published `NO SEND no-free-node` (d5b4fe8, on origin 11:32:04Z). The waiter and its finish step exited; no bot process is left. Nothing was sent by the bot.
+- Lane and pile after the run: lane 5,480 coins, 174,299 usable tKAS, above the abort line, read by status.mjs at about 11:53Z (5,510 coins and 215,651 usable tKAS before the re-funding at 10:06:32Z); payment key 8,400 coins, untouched. Keys 1–15 have no genesis coin left; a next repo funds them again.
+- Leftover: the runner's METHOD commit message read `Pre-run 11 method.` (3d7477a); label only, fixed in the next repo's runner.
+- No `FAILED` file was written. Results: [logs/LESSONS.md](logs/LESSONS.md), [logs/METHOD.md](logs/METHOD.md), [counts/chain/MEMPOOL.md](counts/chain/MEMPOOL.md), and the pre-run 12 block in [locks/LOCKED.md](locks/LOCKED.md).
 
 ## When something breaks
 
